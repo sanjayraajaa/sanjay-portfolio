@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
 import Home from './components/Home';
 import Projects from './components/Projects';
 import Skills from './components/Skills';
@@ -14,12 +13,12 @@ function App() {
   };
 
   return (
-    <Router>
+    <div>
       <nav>
         <h2>
-          <Link to="/" style={{ color: 'white', textDecoration: 'none' }}>
+          <a href="#home" style={{ color: 'white', textDecoration: 'none' }}>
             Home
-          </Link>
+          </a>
         </h2>
         <div className={`burger ${isOpen ? 'active' : ''}`} onClick={handleBurgerClick}>
           <div></div>
@@ -27,18 +26,24 @@ function App() {
           <div></div>
         </div>
         <ul className={isOpen ? 'active' : ''}>
-          <li><Link to="/projects" onClick={() => setIsOpen(false)}>Projects</Link></li>
-          <li><Link to="/skills" onClick={() => setIsOpen(false)}>Skills</Link></li>
-          <li><Link to="/contact" onClick={() => setIsOpen(false)}>Contact</Link></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#contact">Contact</a></li>
         </ul>
       </nav>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/projects" element={<Projects />} />
-        <Route path="/skills" element={<Skills />} />
-        <Route path="/contact" element={<Contact />} />
-      </Routes>
-    </Router>
+      <section id="home">
+        <Home />
+      </section>
+      <section id="projects">
+        <Projects />
+      </section>
+      <section id="skills">
+        <Skills />
+      </section>
+      <section id="contact">
+        <Contact />
+      </section>
+    </div>
   );
 }
 
